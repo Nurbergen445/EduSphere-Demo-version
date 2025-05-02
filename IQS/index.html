@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduSphere - Вход</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="auth-bg">
+      <div class="auth-container">
+        <div class="auth-header">
+          <h1 class="edusphere-logo">EduSphere</h1>
+          <div class="auth-title">Вход в профиль</div>
+        </div>
+        <form id="loginForm" class="auth-form">
+          <div class="input-group">
+            <input type="email" id="email" required placeholder=" " />
+            <label for="email">Электронная почта</label>
+          </div>
+          <div class="input-group">
+            <input type="password" id="password" required placeholder=" " />
+            <label for="password">Пароль</label>
+            <span class="material-icons input-eye" id="togglePassword"
+              >visibility</span
+            >
+          </div>
+          <div class="role-selector-modern">
+            <button
+              type="button"
+              id="studentBtnLogin"
+              class="role-btn-modern active"
+            >
+              Ученик
+            </button>
+            <button type="button" id="teacherBtnLogin" class="role-btn-modern">
+              Учитель
+            </button>
+          </div>
+          <div class="auth-links">
+            <a href="#" id="forgotPassword">Не помню пароль</a>
+          </div>
+          <div id="error-message" class="error-message"></div>
+          <button type="submit" class="btn btn-primary btn-auth">Войти</button>
+        </form>
+        <div class="auth-links">
+          Нет профиля? <a href="#" id="registerLink">Зарегистрируйтесь</a>
+        </div>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+      // Показать/скрыть пароль
+      document.getElementById("togglePassword").onclick = function () {
+        const pwd = document.getElementById("password");
+        if (pwd.type === "password") {
+          pwd.type = "text";
+          this.textContent = "visibility_off";
+        } else {
+          pwd.type = "password";
+          this.textContent = "visibility";
+        }
+      };
+      // Современный выбор роли
+      const roleBtns = document.querySelectorAll(".role-btn-modern");
+      let selectedRole = "student";
+      roleBtns.forEach((btn) => {
+        btn.onclick = function () {
+          roleBtns.forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+          selectedRole = this.id === "studentBtnLogin" ? "student" : "teacher";
+        };
+      });
+      // Для auth.js: экспортируем выбранную роль
+      window.getSelectedRole = () => selectedRole;
+    </script>
+  </body>
+</html>

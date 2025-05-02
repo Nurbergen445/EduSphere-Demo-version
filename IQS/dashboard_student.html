@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduSphere - Панель ученика</title>
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard">
+      <!-- Верхняя панель -->
+      <header class="header">
+        <div class="header-left">
+          <div class="logo">
+            <span class="material-icons">school</span>
+            <span>EduSphere</span>
+          </div>
+        </div>
+        <div class="header-center">
+          <div class="schedule-preview">
+            <div class="schedule-scroll">
+              <div class="schedule-item">
+                <div class="time-block">
+                  <span class="time">8:30 - 9:45</span>
+                  <span class="material-icons">schedule</span>
+                </div>
+                <div class="subject-block">
+                  <span class="subject">Физика</span>
+                  <span class="room">Кабинет 204</span>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="time-block">
+                  <span class="time">9:50 - 10:40</span>
+                  <span class="material-icons">schedule</span>
+                </div>
+                <div class="subject-block">
+                  <span class="subject">Математика</span>
+                  <span class="room">Кабинет 305</span>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="time-block">
+                  <span class="time">10:45 - 11:30</span>
+                  <span class="material-icons">schedule</span>
+                </div>
+                <div class="subject-block">
+                  <span class="subject">Русский язык</span>
+                  <span class="room">Кабинет 102</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="user-controls">
+            <div class="notifications">
+              <button class="notifications-btn" id="notificationsBtn">
+                <span class="material-icons">notifications</span>
+                <span class="notifications-badge">3</span>
+              </button>
+            </div>
+            <div class="theme-toggle" id="themeToggle">
+              <span class="material-icons">dark_mode</span>
+            </div>
+            <div class="user-profile">
+              <span class="material-icons">account_circle</span>
+              <div class="user-details">
+                <span id="userName">Ученик</span>
+                <span id="userClass">10 G</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="main-container">
+        <!-- Левая панель навигации -->
+        <nav class="side-nav">
+          <div class="search-container">
+            <input type="text" id="globalSearch" placeholder="Поиск..." />
+            <span class="material-icons">search</span>
+          </div>
+          <a href="pages/home.html" class="nav-item active" target="_blank">
+            <span class="material-icons">home</span>
+            <span>Главная</span>
+          </a>
+          <a href="pages/schedule.html" class="nav-item" target="_blank">
+            <span class="material-icons">schedule</span>
+            <span>Расписание</span>
+          </a>
+          <a href="pages/homework.html" class="nav-item" target="_blank">
+            <span class="material-icons">assignment</span>
+            <span>Домашние задания</span>
+          </a>
+          <a href="pages/backpack.html" class="nav-item" target="_blank">
+            <span class="material-icons">backpack</span>
+            <span>Рюкзак</span>
+          </a>
+          <a href="pages/documents.html" class="nav-item" target="_blank">
+            <span class="material-icons">description</span>
+            <span>Документы</span>
+          </a>
+          <a href="pages/requests.html" class="nav-item" target="_blank">
+            <span class="material-icons">mail</span>
+            <span>Обращения</span>
+          </a>
+          <a href="pages/notes.html" class="nav-item" target="_blank">
+            <span class="material-icons">note</span>
+            <span>Мои заметки</span>
+          </a>
+          <a href="pages/online.html" class="nav-item" target="_blank">
+            <span class="material-icons">video_camera_front</span>
+            <span>Онлайн-уроки</span>
+          </a>
+          <a href="pages/grades.html" class="nav-item" target="_blank">
+            <span class="material-icons">grade</span>
+            <span>Успеваемость</span>
+          </a>
+          <a href="pages/history.html" class="nav-item" target="_blank">
+            <span class="material-icons">history</span>
+            <span>История</span>
+          </a>
+        </nav>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+          <!-- Главная -->
+          <section id="home" class="content-section active">
+            <div class="welcome-section">
+              <h2>Добро пожаловать!</h2>
+              <div class="upcoming-lessons">
+                <h3>Ближайшие уроки</h3>
+                <div class="current-lesson">
+                  <span class="material-icons">schedule</span>
+                  <div class="lesson-info">
+                    <span class="subject">Текущий урок</span>
+                    <button class="join-lesson-btn">
+                      <span class="material-icons">video_camera_front</span>
+                      Присоединиться к уроку
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Расписание -->
+          <section id="schedule" class="content-section">
+            <h2>Расписание на сегодня</h2>
+            <div class="schedule-container">
+              <div class="current-period" id="currentPeriod"></div>
+              <div id="todaySchedule" class="schedule-list"></div>
+            </div>
+          </section>
+
+          <!-- Домашние задания -->
+          <section id="homework" class="content-section">
+            <h2>Домашние задания</h2>
+            <div class="homework-container">
+              <div id="homeworkList" class="homework-list"></div>
+            </div>
+          </section>
+
+          <!-- Рюкзак -->
+          <section id="backpack" class="content-section">
+            <h2>Мой рюкзак</h2>
+            <div class="backpack-container">
+              <div class="file-upload">
+                <input type="file" id="fileUpload" accept=".pdf,.doc,.docx" />
+                <label for="fileUpload">
+                  <span class="material-icons">upload_file</span>
+                  Загрузить файл
+                </label>
+              </div>
+              <div id="fileList" class="file-list"></div>
+              <div id="pdfViewer" class="pdf-viewer hidden">
+                <div class="pdf-controls">
+                  <button id="closePdf">
+                    <span class="material-icons">close</span>
+                  </button>
+                </div>
+                <iframe id="pdfFrame"></iframe>
+              </div>
+            </div>
+          </section>
+
+          <!-- Заметки -->
+          <section id="notes" class="content-section">
+            <h2>Мои заметки</h2>
+            <div class="notes-container">
+              <div class="notes-sidebar">
+                <button id="newNote" class="new-note-btn">
+                  <span class="material-icons">add</span>
+                  Новая заметка
+                </button>
+                <div id="notesList" class="notes-list"></div>
+              </div>
+              <div class="note-editor">
+                <input
+                  type="text"
+                  id="noteTitle"
+                  placeholder="Название заметки"
+                />
+                <select id="noteSubject">
+                  <option value="">Выберите предмет</option>
+                  <!-- Предметы добавляются динамически -->
+                </select>
+                <textarea
+                  id="noteContent"
+                  placeholder="Текст заметки..."
+                ></textarea>
+                <div class="note-actions">
+                  <button id="saveNote">Сохранить</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Онлайн-уроки -->
+          <section id="online" class="content-section">
+            <h2>Онлайн-уроки</h2>
+            <div class="online-lessons-container">
+              <div id="onlineLessonsList" class="online-lessons-list"></div>
+            </div>
+          </section>
+
+          <!-- Успеваемость -->
+          <section id="grades" class="content-section">
+            <h2>Успеваемость</h2>
+            <div class="grades-container">
+              <div id="gradesList" class="grades-list"></div>
+            </div>
+          </section>
+
+          <!-- Документы -->
+          <section id="documents" class="content-section">
+            <h2>Цифровые документы</h2>
+            <div class="documents-container">
+              <div class="documents-actions">
+                <button class="primary-btn">
+                  <span class="material-icons">upload_file</span>
+                  Загрузить документ
+                </button>
+                <button class="secondary-btn">
+                  <span class="material-icons">note_add</span>
+                  Подать заявление
+                </button>
+              </div>
+              <div class="documents-list">
+                <!-- Документы добавляются динамически -->
+              </div>
+            </div>
+          </section>
+
+          <!-- Обращения -->
+          <section id="requests" class="content-section">
+            <h2>Обращения</h2>
+            <div class="requests-container">
+              <form class="request-form">
+                <div class="form-group">
+                  <label>Тип обращения</label>
+                  <select id="requestType" required>
+                    <option value="">Выберите тип</option>
+                    <option value="question">Вопрос</option>
+                    <option value="complaint">Жалоба</option>
+                    <option value="suggestion">Предложение</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Текст обращения</label>
+                  <textarea id="requestText" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="primary-btn">
+                  <span class="material-icons">send</span>
+                  Отправить
+                </button>
+              </form>
+              <div class="requests-history">
+                <h3>История обращений</h3>
+                <div class="requests-list">
+                  <!-- Обращения добавляются динамически -->
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- История -->
+          <section id="history" class="content-section">
+            <h2>История</h2>
+            <div class="history-container">
+              <div class="history-filters">
+                <div class="date-filter">
+                  <label>Период:</label>
+                  <select id="historyPeriod">
+                    <option value="week">Неделя</option>
+                    <option value="month">Месяц</option>
+                    <option value="quarter">Четверть</option>
+                    <option value="year">Год</option>
+                  </select>
+                </div>
+                <div class="type-filter">
+                  <label>Тип:</label>
+                  <select id="historyType">
+                    <option value="all">Все</option>
+                    <option value="attendance">Посещения</option>
+                    <option value="grades">Оценки</option>
+                    <option value="documents">Документы</option>
+                  </select>
+                </div>
+              </div>
+              <div class="history-timeline">
+                <!-- История добавляется динамически -->
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="js/dashboard_student.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+  </body>
+</html>

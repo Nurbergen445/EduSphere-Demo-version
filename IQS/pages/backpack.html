@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduSphere - Рюкзак</title>
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="dashboard">
+      <header class="header">
+        <div class="header-left">
+          <div class="logo">
+            <span class="material-icons">school</span>
+            <span>EduSphere</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="main-container">
+        <main class="main-content">
+          <section id="backpack" class="content-section active">
+            <h2>Мой рюкзак</h2>
+            <div class="backpack-container">
+              <div class="file-upload">
+                <input type="file" id="fileUpload" accept=".pdf,.doc,.docx" />
+                <label for="fileUpload">
+                  <span class="material-icons">upload_file</span>
+                  Загрузить файл
+                </label>
+              </div>
+              <div id="fileList" class="file-list"></div>
+              <div id="pdfViewer" class="pdf-viewer hidden">
+                <div class="pdf-controls">
+                  <button id="closePdf">
+                    <span class="material-icons">close</span>
+                  </button>
+                  <div class="pdf-navigation">
+                    <button id="prevPage">
+                      <span class="material-icons">navigate_before</span>
+                    </button>
+                    <span id="pageInfo">Страница 1 из 1</span>
+                    <button id="nextPage">
+                      <span class="material-icons">navigate_next</span>
+                    </button>
+                  </div>
+                </div>
+                <canvas id="pdfCanvas"></canvas>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script src="../js/backpack.js"></script>
+  </body>
+</html>
